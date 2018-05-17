@@ -1,0 +1,62 @@
+
+StartRun
+{
+    "command": "startRun",
+    "nonce": <GUID>
+}
+
+StartRunResponse
+{
+    "re-nonce": <GUID>,
+    "error": <null | String>
+}
+
+EnterSplit
+{
+    "command": "enterSplit",
+    "re-nonce": <GUID>,
+    "secondsSinceStart": <Float>
+}
+
+EnterSplitResponse
+{
+    "re-nonce": <GUID>,
+    "error": <null | String>,
+    "time": <SplitTime>
+}
+
+SkipSplit
+{
+    "command": "skipSplit",
+    "nonce": <GUID>
+}
+
+SkipSplitResponse
+{
+    "re-nonce": <GUID>,
+    "error": <null | String>
+}
+
+ResetRun
+{
+    "command": "resetRun",
+    "nonce": <GUID>
+}
+
+ResetRunResponse
+{
+    "re-nonce": <GUID>,
+    "error": <null | String>
+}
+
+ClearRun
+{
+    "command": "clearRun",
+    "nonce": <GUID>
+}
+
+RunResponse
+{
+    "re-nonce": <GUID>,
+    "error": <null | String>
+}

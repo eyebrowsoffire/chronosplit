@@ -1,0 +1,26 @@
+
+RunStartedEvent
+{
+    "event": "runStarted",
+}
+
+SplitEntered
+{
+    "event": "splitEntered",
+    "time": <SplitTime>
+}
+
+SplitSkipped
+{
+    "event": "splitSkipped"
+}
+
+RunReset
+{
+    "event": "runReset"
+}
+
+RunCleared
+{
+    "event": "runCleared"
+}

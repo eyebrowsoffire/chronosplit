@@ -1,0 +1,97 @@
+
+SplitInfo
+{
+	"name": <String>,
+	"iconUrl": <String>
+}
+
+SplitGroup
+{
+	"info": <SplitInfo>,
+	"splits":
+	[
+		<Split | SplitGroup>...
+	]
+}
+
+Split
+{
+	"info": <SplitInfo>
+}
+
+Time
+{
+	"seconds": <Float>,
+	"quality": <"faster" | "slower" | "sessionBest" | "personalBest">
+}
+
+SplitTime
+{
+	"info": <SplitInfo>,
+	"time": <Time>,
+	"totalTime": <Time>
+}
+
+SplitGroupTime
+{
+	"info": <SplitInfo>,
+	"quality": <"slower" | "faster" | "bestTime">
+	"time": <Time>,
+	"totalTime": <Time>
+	"splits":
+	[
+		<SplitTime | SplitGroupTime>
+	]
+}
+
+Category
+{
+	"name": <String>
+}
+
+GameInfo
+{
+	"name": <String>
+}
+
+Game
+{
+	"gameInfo": <GameInfo>,
+	"categories":
+	[
+		<Category>
+	]
+}
+
+SessionTemplate
+{
+	"gameInfo": <GameInfo>,
+	"category": <Category>,
+	"splits": [ <Split | SplitGroup> ]
+}
+
+Run
+{
+	"state": <"stopped" | "started" | "reset" | "completed">,
+	"totalTime": <Time>,
+	"times":
+	[
+		<SplitTime | SplitGroupTime>
+	]
+}
+
+Session
+{
+	"archivedRuns":
+	[
+		<Run>
+	],
+	"pastRuns":
+	[
+		<Run>
+	],
+	"currentRun": <Run>,
+	"sessionBest": <Run>,
+	"personalBest": <Run>,
+}
+
