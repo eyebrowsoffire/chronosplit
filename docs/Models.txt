@@ -28,6 +28,7 @@ Time
 SplitTime
 {
 	"info": <SplitInfo>,
+	"quality": <"slower" | "faster" | "bestTime">
 	"time": <Time>,
 	"totalTime": <Time>
 }
