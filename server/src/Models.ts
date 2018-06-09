@@ -8,7 +8,7 @@ export interface Split {
     subSplits?: Split[];
 }
 
-export enum SplitQuality {
+export const enum SplitQuality {
     Faster = "faster",
     Slower = "slower",
     SessionBest = "sessionBest",
@@ -46,7 +46,7 @@ export interface SessionTemplate {
     splits: Split[];
 }
 
-export enum RunState {
+export const enum RunState {
     Stopped = "stopped",
     Started = "started",
     Reset = "reset",

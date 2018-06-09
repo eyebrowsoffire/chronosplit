@@ -2,11 +2,11 @@
 
 import * as Models from "./Models";
 
-interface RunManagerObserver {
+export interface RunManagerObserver {
     runStarted: () => void;
 }
 
-class RunManager {
+export class RunManager {
     private template: Models.SessionTemplate;
     private currentRun?: Models.Run;
     private currentSplit?: Models.Split;
