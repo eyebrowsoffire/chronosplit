@@ -1,6 +1,6 @@
 import WebSocket = require("ws");
 
-export class ObserverSession {
+export class HostObserverSession {
     constructor(private ws: WebSocket) {
         console.log("observer connected");
     }

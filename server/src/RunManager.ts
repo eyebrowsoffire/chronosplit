@@ -1,17 +1,13 @@
 // @ts-check
 
 import * as Models from "chronosplit-core/Models";
-
-export interface RunManagerObserver {
-    runStarted: () => void;
-    splitEntered: (timeSinceStart: number) => void;
-}
+import { RunObserver } from "chronosplit-core/RunObserver";
 
 export class RunManager {
     private template: Models.SessionTemplate;
     private currentRun?: Models.Run;
     private currentSplit?: Models.Split;
-    private observers: Set<RunManagerObserver>;
+    private observers: Set<RunObserver>;
 
     constructor(template: Models.SessionTemplate) {
         this.template = template;
@@ -34,11 +30,11 @@ export class RunManager {
         };
     }
 
-    public addObserver(observer: RunManagerObserver) {
+    public addObserver(observer: RunObserver) {
         this.observers.add(observer);
     }
 
-    public removeObserver(observer: RunManagerObserver) {
+    public removeObserver(observer: RunObserver) {
         this.observers.delete(observer);
     }
 

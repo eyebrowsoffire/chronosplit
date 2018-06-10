@@ -1,9 +1,9 @@
 import WebSocket = require("ws");
 
-import { RunManager } from "./RunManager"
-import * as Commands from "chronosplit-core/Commands"
+import { RunManager } from "./RunManager";
+import * as Commands from "chronosplit-core/Commands";
 
-export class ControllerSession {
+export class HostControllerSession {
     constructor(private ws: WebSocket, private runManager: RunManager) {
         console.log("controller connected");
         ws.on("message", this.receivedMessage);
