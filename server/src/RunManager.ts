@@ -1,9 +1,10 @@
 // @ts-check
 
-import * as Models from "./Models";
+import * as Models from "chronosplit-core/Models";
 
 export interface RunManagerObserver {
     runStarted: () => void;
+    splitEntered: (timeSinceStart: number) => void;
 }
 
 export class RunManager {
@@ -51,5 +52,9 @@ export class RunManager {
         this.observers.forEach((observer) => {
             observer.runStarted();
         });
+    }
+
+    public enterSplit(timeSinceStart: number) {
+
     }
 }

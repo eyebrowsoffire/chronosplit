@@ -2,9 +2,11 @@ import url = require("url");
 import WebSocket = require("ws");
 import http = require("http");
 import net = require("net");
+
 import { ObserverSession } from "./ObserverSession";
 import { ControllerSession } from "./ControllerSession";
-import { SessionTemplate } from "./Models";
+import { SessionTemplate } from "chronosplit-core/Models";
+import { RunManager } from "./RunManager";
 
 export class ServerSession {
   private httpServer: http.Server;
@@ -12,8 +14,10 @@ export class ServerSession {
   private observerListener: WebSocket.Server;
   private observers: Set<ObserverSession> = new Set<ObserverSession>();
   private controller?: ControllerSession;
+  private runManager: RunManager;
 
   constructor(private port: number, private template: SessionTemplate) {
+    this.runManager = new RunManager(template);
   }
 
   public listen() {
@@ -49,7 +53,7 @@ export class ServerSession {
 
   private createController = (ws: WebSocket) => {
     if (!this.controller) {
-      this.controller = new ControllerSession(ws);
+      this.controller = new ControllerSession(ws, this.runManager);
       this.controller;
     } else {
       ws.send("Controller already connected");

@@ -1,7 +1,7 @@
 import WebSocket = require("ws");
 
 import { RunManager } from "./RunManager"
-import * as Commands from "./Commands"
+import * as Commands from "chronosplit-core/Commands"
 
 export class ControllerSession {
     constructor(private ws: WebSocket, private runManager: RunManager) {
@@ -27,8 +27,23 @@ export class ControllerSession {
         const command: Commands.Command = JSON.parse(data);
 
         switch (command.command) {
-            case (Commands.CommandType.StartRun):
-                this.runManager.startRun()
+            case (Commands.CommandType.StartRun): {
+                this.runManager.startRun();
+
+                // TODO: issue response.
+                break;
+            }
+
+            case (Commands.CommandType.EnterSplit): {
+                if (!command.secondsSinceStart) {
+                    // TODO: issue error.
+                    return;
+                }
+
+                this.runManager.enterSplit(command.secondsSinceStart);
+                // TODO: issue response.
+                break;
+            }
         }
     }
 }
